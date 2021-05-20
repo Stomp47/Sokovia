@@ -1,7 +1,6 @@
 package com.drummond.sokovia.controller;
 
 import com.drummond.sokovia.controller.dto.InputHeroi;
-import com.drummond.sokovia.controller.dto.RegistroHeroiMapper;
 import com.drummond.sokovia.service.RegistroHeroi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,12 +19,8 @@ public class RegistroHeroiController {
 
     private final RegistroHeroi registroHeroi;
 
-    private final RegistroHeroiMapper mapper;
-
 @PostMapping
-    public ResponseEntity registro(@Valid @RequestBody InputHeroi inputHeroi){
-
-        var heroi = mapper.inputHeroiToHeroi(inputHeroi);
+    public ResponseEntity registro(@Valid @RequestBody InputHeroi heroi){
 
         registroHeroi.criaHeroi(heroi);
         return ResponseEntity.status(HttpStatus.CREATED).build();
