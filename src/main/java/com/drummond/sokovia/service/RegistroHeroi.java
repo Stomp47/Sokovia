@@ -7,6 +7,8 @@ import com.drummond.sokovia.repository.HeroiRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RegistroHeroi {
@@ -31,6 +33,23 @@ public class RegistroHeroi {
             throw new HeroiCadastradoException("Heroi já cadastrado no sistema");
         }
 
+    }
+
+    public List<InputHeroi> heroisCadastrados() {
+
+        var herois = heroiRepository.findAll();
+
+        return mapper.heroiListToInputHeroiList(herois);
+    }
+
+    public InputHeroi achaHeroiPorNome(String nome) {
+
+        var heroiSalvo = heroiRepository.achaPorNome(nome)
+                .orElseThrow(()-> new HeroiCadastradoException("Heroi não encontrado"));
+
+        var heroi = mapper.heroiToInputHeroi(heroiSalvo);
+
+        return heroi;
     }
 
 }

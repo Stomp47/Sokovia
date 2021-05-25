@@ -9,7 +9,9 @@ import javax.persistence.Id;
 
 @Entity
 @Builder
+@Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Heroi {
 
     @Id
@@ -20,9 +22,13 @@ public class Heroi {
 
     private String email;
 
-    private String poder;
+    private String habilidade;
 
-    private String localizacao;
+    private String genero;
+
+    private String localizacaoAtual;
+
+    private String origem;
 
     // esse eh mode para criar os herois
 

@@ -1,13 +1,16 @@
 package com.drummond.sokovia.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
 
 @ToString
-@Data
+@Builder
+@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class InputHeroi {
 
@@ -18,8 +21,14 @@ public class InputHeroi {
     private String email;
 
     @NotBlank
-    private String poder;
+    private String habilidade;
 
     @NotBlank
-    private String localizacao;
+    private String genero;
+
+    @NotBlank
+    private String localizacaoAtual;
+
+    @NotBlank
+    private String origem;
 }
