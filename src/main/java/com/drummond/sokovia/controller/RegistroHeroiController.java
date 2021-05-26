@@ -1,8 +1,8 @@
 package com.drummond.sokovia.controller;
 
-import com.drummond.sokovia.controller.dto.InputHeroi;
+import com.drummond.sokovia.controller.dto.AtualisaHeroiDto;
+import com.drummond.sokovia.controller.dto.CadastroHeroiDto;
 import com.drummond.sokovia.service.RegistroHeroi;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class RegistroHeroiController {
     private final RegistroHeroi registroHeroi;
 
     @PostMapping("/registro")
-    public ResponseEntity registro(@Valid @RequestBody InputHeroi heroi) {
+    public ResponseEntity registro(@Valid @RequestBody CadastroHeroiDto heroi) {
 
         registroHeroi.criaHeroi(heroi);
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -32,5 +32,18 @@ public class RegistroHeroiController {
     @GetMapping("/cadastro/nome")
     public ResponseEntity acharNome(@RequestParam String nome) {
         return ResponseEntity.status(HttpStatus.OK).body(registroHeroi.achaHeroiPorNome(nome));
+    }
+
+    @DeleteMapping
+    public ResponseEntity apagarRegistro(@RequestParam String nome) {
+        registroHeroi.apagarRegistroHeroi(nome);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PutMapping
+    public ResponseEntity teste (@RequestParam String nome, @RequestBody String nomeAtualizado){
+        var heroi = registroHeroi.atualizarHeroi(nome,nomeAtualizado);
+
+        return ResponseEntity.status(HttpStatus.OK).body(heroi);
     }
 }

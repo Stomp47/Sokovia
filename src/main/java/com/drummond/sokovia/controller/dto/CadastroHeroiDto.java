@@ -9,10 +9,10 @@ import lombok.ToString;
 import javax.validation.constraints.NotBlank;
 
 @ToString
-@Builder
+@Builder(toBuilder = true)
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class InputHeroi {
+public class CadastroHeroiDto {
 
     @NotBlank
     private String nome;

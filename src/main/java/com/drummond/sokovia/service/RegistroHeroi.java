@@ -1,6 +1,7 @@
 package com.drummond.sokovia.service;
 
-import com.drummond.sokovia.controller.dto.InputHeroi;
+import com.drummond.sokovia.controller.dto.AtualisaHeroiDto;
+import com.drummond.sokovia.controller.dto.CadastroHeroiDto;
 import com.drummond.sokovia.controller.dto.RegistroHeroiMapper;
 import com.drummond.sokovia.model.Heroi;
 import com.drummond.sokovia.repository.HeroiRepository;
@@ -17,7 +18,7 @@ public class RegistroHeroi {
 
     private final RegistroHeroiMapper mapper;
 
-    public Heroi criaHeroi(InputHeroi inputHeroi) {
+    public Heroi criaHeroi(CadastroHeroiDto inputHeroi) {
 
         heroiExistente(inputHeroi.getNome());
 
@@ -35,21 +36,40 @@ public class RegistroHeroi {
 
     }
 
-    public List<InputHeroi> heroisCadastrados() {
+    public List<CadastroHeroiDto> heroisCadastrados() {
 
         var herois = heroiRepository.findAll();
 
         return mapper.heroiListToInputHeroiList(herois);
     }
 
-    public InputHeroi achaHeroiPorNome(String nome) {
+    public CadastroHeroiDto achaHeroiPorNome(String nome) {
 
         var heroiSalvo = heroiRepository.achaPorNome(nome)
-                .orElseThrow(()-> new HeroiCadastradoException("Heroi não encontrado"));
+                .orElseThrow(() -> new HeroiCadastradoException("Heroi não encontrado"));
 
         var heroi = mapper.heroiToInputHeroi(heroiSalvo);
 
         return heroi;
+    }
+
+    public void apagarRegistroHeroi(String nome) {
+        var heroiSalvo = heroiRepository.achaPorNome(nome)
+                .orElseThrow(() -> new HeroiCadastradoException("Heroi não encontrado"));
+        heroiRepository.delete(heroiSalvo);
+    }
+
+    public Heroi atualizarHeroi(String nome,String nomeAtualizado) {
+
+        var heroiSalvo = heroiRepository.achaPorNome(nome)
+                .orElseThrow(() -> new HeroiCadastradoException("Heroi não encontrado"));
+
+        heroiSalvo = Heroi.builder()
+                .nome(nomeAtualizado)
+                .build();
+
+        heroiRepository.save(heroiSalvo);
+        return heroiSalvo;
     }
 
 }

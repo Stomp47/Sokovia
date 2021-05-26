@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 @Component
 public class RegistroHeroiMapper {
 
-    public Heroi inputHeroiToHeroi (InputHeroi inputHeroi) {
+    public Heroi inputHeroiToHeroi (CadastroHeroiDto inputHeroi) {
         return Heroi.builder()
                 .nome(inputHeroi.getNome())
                 .email(inputHeroi.getEmail())
@@ -20,8 +20,8 @@ public class RegistroHeroiMapper {
                 .build();
     }
 
-    public InputHeroi heroiToInputHeroi (Heroi heroi) {
-        return InputHeroi.builder()
+    public CadastroHeroiDto heroiToInputHeroi (Heroi heroi) {
+        return CadastroHeroiDto.builder()
                 .nome(heroi.getNome())
                 .email(heroi.getEmail())
                 .habilidade(heroi.getHabilidade())
@@ -31,7 +31,7 @@ public class RegistroHeroiMapper {
                 .build();
     }
 
-    public List<InputHeroi> heroiListToInputHeroiList(List<Heroi>herois){
+    public List<CadastroHeroiDto> heroiListToInputHeroiList(List<Heroi>herois){
         return herois.stream().map(this::heroiToInputHeroi).collect(Collectors.toList());
     }
 
