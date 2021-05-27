@@ -1,7 +1,7 @@
 package com.drummond.sokovia.service;
 
-import com.drummond.sokovia.controller.dto.AtualisaHeroiDto;
 import com.drummond.sokovia.controller.dto.CadastroHeroiDto;
+import com.drummond.sokovia.controller.dto.HeroiDTO;
 import com.drummond.sokovia.controller.dto.RegistroHeroiMapper;
 import com.drummond.sokovia.model.Heroi;
 import com.drummond.sokovia.repository.HeroiRepository;
@@ -48,9 +48,7 @@ public class RegistroHeroi {
         var heroiSalvo = heroiRepository.achaPorNome(nome)
                 .orElseThrow(() -> new HeroiCadastradoException("Heroi não encontrado"));
 
-        var heroi = mapper.heroiToInputHeroi(heroiSalvo);
-
-        return heroi;
+        return mapper.heroiToInputHeroi(heroiSalvo);
     }
 
     public void apagarRegistroHeroi(String nome) {
@@ -59,16 +57,18 @@ public class RegistroHeroi {
         heroiRepository.delete(heroiSalvo);
     }
 
-    public Heroi atualizarHeroi(String nome,String nomeAtualizado) {
+    public Heroi atualizarHeroi(String nome, HeroiDTO heroi) {
 
         var heroiSalvo = heroiRepository.achaPorNome(nome)
                 .orElseThrow(() -> new HeroiCadastradoException("Heroi não encontrado"));
 
-        heroiSalvo = Heroi.builder()
-                .nome(nomeAtualizado)
-                .build();
+        heroiSalvo.setGenero(heroi.getGenero());
+        heroiSalvo.setHabilidade(heroi.getHabilidade());
+        heroiSalvo.setLocalizacaoAtual(heroi.getLocalizacaoAtual());
+        heroiSalvo.setOrigem(heroi.getOrigem());
 
         heroiRepository.save(heroiSalvo);
+
         return heroiSalvo;
     }
 

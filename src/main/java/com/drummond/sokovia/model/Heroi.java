@@ -8,8 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@Builder(toBuilder = true)
+@Builder
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Heroi {

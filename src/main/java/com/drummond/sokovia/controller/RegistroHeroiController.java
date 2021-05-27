@@ -1,7 +1,7 @@
 package com.drummond.sokovia.controller;
 
-import com.drummond.sokovia.controller.dto.AtualisaHeroiDto;
 import com.drummond.sokovia.controller.dto.CadastroHeroiDto;
+import com.drummond.sokovia.controller.dto.HeroiDTO;
 import com.drummond.sokovia.service.RegistroHeroi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -41,8 +41,8 @@ public class RegistroHeroiController {
     }
 
     @PutMapping
-    public ResponseEntity teste (@RequestParam String nome, @RequestBody String nomeAtualizado){
-        var heroi = registroHeroi.atualizarHeroi(nome,nomeAtualizado);
+    public ResponseEntity teste (@RequestParam String nome, @RequestBody HeroiDTO heroiDTO){
+        var heroi = registroHeroi.atualizarHeroi(nome,heroiDTO);
 
         return ResponseEntity.status(HttpStatus.OK).body(heroi);
     }
