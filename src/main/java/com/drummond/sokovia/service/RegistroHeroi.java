@@ -62,11 +62,18 @@ public class RegistroHeroi {
         var heroiSalvo = heroiRepository.achaPorNome(nome)
                 .orElseThrow(() -> new HeroiCadastradoException("Heroi não encontrado"));
 
-        heroiSalvo.setGenero(heroi.getGenero());
-        heroiSalvo.setHabilidade(heroi.getHabilidade());
-        heroiSalvo.setLocalizacaoAtual(heroi.getLocalizacaoAtual());
-        heroiSalvo.setOrigem(heroi.getOrigem());
-
+        if (heroi.getGenero() != null) {
+            heroiSalvo.setGenero(heroi.getGenero());
+        }
+        if (heroi.getHabilidade() != null) {
+            heroiSalvo.setHabilidade(heroi.getHabilidade());
+        }
+        if (heroi.getOrigem() != null) {
+            heroiSalvo.setOrigem(heroi.getOrigem());
+        }
+        if (heroi.getLocalizacaoAtual() != null) {
+            heroiSalvo.setLocalizacaoAtual(heroi.getLocalizacaoAtual());
+        }
         heroiRepository.save(heroiSalvo);
 
         return heroiSalvo;
