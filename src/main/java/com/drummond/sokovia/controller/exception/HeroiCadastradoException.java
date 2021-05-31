@@ -1,4 +1,4 @@
-package com.drummond.sokovia.service;
+package com.drummond.sokovia.controller.exception;
 
 public class HeroiCadastradoException extends RuntimeException {
     public HeroiCadastradoException(String mensagem) {

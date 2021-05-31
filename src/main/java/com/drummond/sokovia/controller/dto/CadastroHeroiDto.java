@@ -14,21 +14,21 @@ import javax.validation.constraints.NotBlank;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CadastroHeroiDto {
 
-    @NotBlank
+    @NotBlank(message = "O campo é nome obrigatório")
     private String nome;
 
-    @NotBlank
+    @NotBlank(message = "O campo é email obrigatório")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "O campo é habilidade obrigatório")
     private String habilidade;
 
-    @NotBlank
+    @NotBlank(message = "O campo é genero obrigatório")
     private String genero;
 
-    @NotBlank
+    @NotBlank(message = "O campo é localizacaoAtual obrigatório")
     private String localizacaoAtual;
 
-    @NotBlank
+    @NotBlank(message = "O campo é origem obrigatório")
     private String origem;
 }

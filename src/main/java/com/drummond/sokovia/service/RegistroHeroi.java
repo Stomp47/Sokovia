@@ -3,6 +3,7 @@ package com.drummond.sokovia.service;
 import com.drummond.sokovia.controller.dto.CadastroHeroiDto;
 import com.drummond.sokovia.controller.dto.HeroiDTO;
 import com.drummond.sokovia.controller.dto.RegistroHeroiMapper;
+import com.drummond.sokovia.controller.exception.HeroiCadastradoException;
 import com.drummond.sokovia.model.Heroi;
 import com.drummond.sokovia.repository.HeroiRepository;
 import lombok.RequiredArgsConstructor;

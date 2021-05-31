@@ -26,7 +26,13 @@ public class RegistroHeroiController {
 
     @GetMapping("/cadastro")
     public ResponseEntity heroisCadastrados() {
-        return ResponseEntity.status(HttpStatus.OK).body(registroHeroi.heroisCadastrados());
+
+        var heroisCadastrados = registroHeroi.heroisCadastrados();
+
+        if(heroisCadastrados.isEmpty() || heroisCadastrados() == null){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(heroisCadastrados);
     }
 
     @GetMapping("/cadastro/nome")
