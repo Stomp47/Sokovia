@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,13 +24,13 @@ public class RegistroHeroi {
 
         heroiExistente(inputHeroi.getNome());
 
-        var heroi = mapper.inputHeroiToHeroi(inputHeroi);
+        Heroi heroi = mapper.inputHeroiToHeroi(inputHeroi);
 
         return heroiRepository.save(heroi);
     }
 
     public void heroiExistente(String nome) {
-        var heroiSalvo = heroiRepository.achaPorNome(nome);
+        Optional<Heroi> heroiSalvo = heroiRepository.achaPorNome(nome);
 
         if (heroiSalvo.isPresent()) {
             throw new HeroiCadastradoException("Heroi já cadastrado no sistema");
@@ -39,28 +40,28 @@ public class RegistroHeroi {
 
     public List<CadastroHeroiDto> heroisCadastrados() {
 
-        var herois = heroiRepository.findAll();
+        List<Heroi> herois = heroiRepository.findAll();
 
         return mapper.heroiListToInputHeroiList(herois);
     }
 
     public CadastroHeroiDto achaHeroiPorNome(String nome) {
 
-        var heroiSalvo = heroiRepository.achaPorNome(nome)
+        Heroi heroiSalvo = heroiRepository.achaPorNome(nome)
                 .orElseThrow(() -> new HeroiCadastradoException("Heroi não encontrado"));
 
         return mapper.heroiToInputHeroi(heroiSalvo);
     }
 
     public void apagarRegistroHeroi(String nome) {
-        var heroiSalvo = heroiRepository.achaPorNome(nome)
+        Heroi heroiSalvo = heroiRepository.achaPorNome(nome)
                 .orElseThrow(() -> new HeroiCadastradoException("Heroi não encontrado"));
         heroiRepository.delete(heroiSalvo);
     }
 
     public Heroi atualizarHeroi(String nome, HeroiDTO heroi) {
 
-        var heroiSalvo = heroiRepository.achaPorNome(nome)
+        Heroi heroiSalvo = heroiRepository.achaPorNome(nome)
                 .orElseThrow(() -> new HeroiCadastradoException("Heroi não encontrado"));
 
         if (heroi.getGenero() != null) {

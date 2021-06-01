@@ -2,6 +2,7 @@ package com.drummond.sokovia.controller;
 
 import com.drummond.sokovia.controller.dto.CadastroHeroiDto;
 import com.drummond.sokovia.controller.dto.HeroiDTO;
+import com.drummond.sokovia.model.Heroi;
 import com.drummond.sokovia.service.RegistroHeroi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,7 +29,7 @@ public class RegistroHeroiController {
     @GetMapping("/cadastro")
     public ResponseEntity heroisCadastrados() {
 
-        var heroisCadastrados = registroHeroi.heroisCadastrados();
+        List<CadastroHeroiDto> heroisCadastrados = registroHeroi.heroisCadastrados();
 
         if(heroisCadastrados.isEmpty() || heroisCadastrados() == null){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
@@ -48,7 +50,7 @@ public class RegistroHeroiController {
 
     @PutMapping
     public ResponseEntity teste (@RequestParam String nome, @RequestBody HeroiDTO heroiDTO){
-        var heroi = registroHeroi.atualizarHeroi(nome,heroiDTO);
+        Heroi heroi = registroHeroi.atualizarHeroi(nome,heroiDTO);
 
         return ResponseEntity.status(HttpStatus.OK).body(heroi);
     }

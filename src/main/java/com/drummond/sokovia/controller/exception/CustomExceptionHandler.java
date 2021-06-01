@@ -24,7 +24,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     protected ResponseEntity<ErroDTO> onConstraintViolationException(ConstraintViolationException ex){
 
-        var errorDetail= ex.getConstraintViolations()
+        String errorDetail = ex.getConstraintViolations()
                 .stream().map(error -> String.format("%s = %s",error.getPropertyPath().toString(),
                         error.getPropertyPath().toString(),
                         error.getMessage()))
@@ -40,7 +40,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(MissingFormatArgumentException.class)
     public ResponseEntity<ErroDTO> onMissingFormatArgumentException(MissingFormatArgumentException ex){
-         final var errorResponse = ErroDTO.builder().code(HttpStatus.BAD_REQUEST.value())
+         final ErroDTO errorResponse = ErroDTO.builder().code(HttpStatus.BAD_REQUEST.value())
                  .mensagem(ex.getMessage())
                  .build();
          return new ResponseEntity(errorResponse,HttpStatus.BAD_REQUEST);
@@ -49,7 +49,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(HeroiCadastradoException.class)
     public ResponseEntity<ErroDTO> onAlunoInexistenteException(HeroiCadastradoException ex){
-        final var errorResponse = ErroDTO.builder().code(HttpStatus.BAD_REQUEST.value())
+        final ErroDTO errorResponse = ErroDTO.builder().code(HttpStatus.BAD_REQUEST.value())
                 .mensagem(ex.getMessage())
                 .build();
         return new ResponseEntity(errorResponse,HttpStatus.BAD_REQUEST);
