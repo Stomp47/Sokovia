@@ -13,7 +13,7 @@ public class HeroiDTO {
 
     private String genero;
 
-    private String localizacaoAtual;
+    private String localidade;
 
     private String origem;
 }

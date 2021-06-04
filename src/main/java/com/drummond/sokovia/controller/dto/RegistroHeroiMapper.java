@@ -15,7 +15,7 @@ public class RegistroHeroiMapper {
                 .email(inputHeroi.getEmail())
                 .habilidade(inputHeroi.getHabilidade())
                 .genero(inputHeroi.getGenero())
-                .localizacaoAtual(inputHeroi.getLocalizacaoAtual())
+                .localidade(inputHeroi.getLocalidade())
                 .origem(inputHeroi.getOrigem())
                 .build();
     }
@@ -26,7 +26,7 @@ public class RegistroHeroiMapper {
                 .email(heroi.getEmail())
                 .habilidade(heroi.getHabilidade())
                 .genero(heroi.getGenero())
-                .localizacaoAtual(heroi.getLocalizacaoAtual())
+                .localidade(heroi.getLocalidade())
                 .origem((heroi.getOrigem()))
                 .build();
     }

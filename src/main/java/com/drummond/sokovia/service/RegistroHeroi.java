@@ -73,8 +73,8 @@ public class RegistroHeroi {
         if (heroi.getOrigem() != null) {
             heroiSalvo.setOrigem(heroi.getOrigem());
         }
-        if (heroi.getLocalizacaoAtual() != null) {
-            heroiSalvo.setLocalizacaoAtual(heroi.getLocalizacaoAtual());
+        if (heroi.getLocalidade() != null) {
+            heroiSalvo.setLocalidade(heroi.getLocalidade());
         }
         heroiRepository.save(heroiSalvo);
 

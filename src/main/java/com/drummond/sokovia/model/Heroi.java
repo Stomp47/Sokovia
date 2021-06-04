@@ -27,7 +27,7 @@ public class Heroi {
 
     private String genero;
 
-    private String localizacaoAtual;
+    private String localidade;
 
     private String origem;
 

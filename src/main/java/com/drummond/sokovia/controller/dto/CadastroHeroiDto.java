@@ -2,7 +2,6 @@ package com.drummond.sokovia.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -27,7 +26,7 @@ public class CadastroHeroiDto {
     private String genero;
 
     @NotBlank(message = "O campo é localizacaoAtual obrigatório")
-    private String localizacaoAtual;
+    private String localidade;
 
     @NotBlank(message = "O campo é origem obrigatório")
     private String origem;
