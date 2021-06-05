@@ -31,7 +31,7 @@ public class RegistroHeroiController {
 
         List<CadastroHeroiDto> heroisCadastrados = registroHeroi.heroisCadastrados();
 
-        if(heroisCadastrados.isEmpty() || heroisCadastrados() == null){
+        if (heroisCadastrados.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
         return ResponseEntity.status(HttpStatus.OK).body(heroisCadastrados);
@@ -49,8 +49,8 @@ public class RegistroHeroiController {
     }
 
     @PutMapping
-    public ResponseEntity teste (@RequestParam String nome, @RequestBody HeroiDTO heroiDTO){
-        Heroi heroi = registroHeroi.atualizarHeroi(nome,heroiDTO);
+    public ResponseEntity atualizaCadastro(@RequestParam String nome, @RequestBody HeroiDTO heroiDTO) {
+        Heroi heroi = registroHeroi.atualizarHeroi(nome, heroiDTO);
 
         return ResponseEntity.status(HttpStatus.OK).body(heroi);
     }
