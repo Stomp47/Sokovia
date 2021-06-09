@@ -65,13 +65,13 @@ public class RegistroHeroi {
         Heroi heroiSalvo = heroiRepository.achaPorNome(nome)
                 .orElseThrow(() -> new HeroiCadastradoException("Heroi não encontrado"));
 
-        if (!heroi.getHabilidade().equals("") ||   heroi.getGenero() != null) {
+        if (!heroi.getGenero().equals("") ||   heroi.getGenero() != null) {
             heroiSalvo.setGenero(heroi.getGenero());
         }
         if (heroi.getHabilidade() != null || !heroi.getHabilidade().isEmpty()) {
             heroiSalvo.setHabilidade(heroi.getHabilidade());
         }
-        if (!heroi.getHabilidade().isEmpty() || heroi.getOrigem() != null) {
+        if (!heroi.getOrigem().isEmpty() || heroi.getOrigem() != null) {
             heroiSalvo.setOrigem(heroi.getOrigem());
         }
         if (heroi.getLocalidade() != null) {
