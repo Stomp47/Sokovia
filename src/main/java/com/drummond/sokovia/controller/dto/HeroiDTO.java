@@ -9,6 +9,8 @@ import lombok.*;
 @NoArgsConstructor
 public class HeroiDTO {
 
+    private String email;
+
     private String habilidade;
 
     private String genero;

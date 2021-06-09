@@ -20,16 +20,17 @@ public class RegistroHeroi {
 
     private final RegistroHeroiMapper mapper;
 
-    public Heroi criaHeroi(CadastroHeroiDto inputHeroi) {
+    public void criaHeroi(CadastroHeroiDto inputHeroi) {
 
         heroiExistente(inputHeroi.getNome());
 
         Heroi heroi = mapper.inputHeroiToHeroi(inputHeroi);
 
-        return heroiRepository.save(heroi);
+        heroiRepository.save(heroi);
     }
 
     public void heroiExistente(String nome) {
+
         Optional<Heroi> heroiSalvo = heroiRepository.achaPorNome(nome);
 
         if (heroiSalvo.isPresent()) {
@@ -64,7 +65,7 @@ public class RegistroHeroi {
         Heroi heroiSalvo = heroiRepository.achaPorNome(nome)
                 .orElseThrow(() -> new HeroiCadastradoException("Heroi não encontrado"));
 
-        if (heroi.getGenero() != null) {
+        if (heroi.getHabilidade().equals("") ||   heroi.getGenero() != null) {
             heroiSalvo.setGenero(heroi.getGenero());
         }
         if (heroi.getHabilidade() != null) {
