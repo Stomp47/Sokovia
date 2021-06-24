@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "a1f0244c-5564-4e31-b5e7-957057335b7f",
+		"name": "Sokovia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Salvo Heroi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\":\"mateuzin@yahoo.com\",\r\n\"genero\": \"masculino\",\r\n\"habilidade\":\"vou pegar max no rune\",\r\n\"nome\": \"stomp\",\r\n\"origem\":\"Marte\",\r\n\"localidade\":\"rua doida\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tratadoSokovia/registro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tratadoSokovia",
+						"registro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Herois",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tratadoSokovia/cadastro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tratadoSokovia",
+						"cadastro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Herois Por nome",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tratadoSokovia/cadastro/nome?nome=stomp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tratadoSokovia",
+						"cadastro",
+						"nome"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "stomp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tratadoSokovia/?nome=stomp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tratadoSokovia",
+						""
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "stomp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza Heroi",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"mateuszin@hotmail.com\" ,\r\n    \"habilidade\":\"teleporte\",\r\n    \"genero\":\"masculino\",\r\n    \"localidade\": \"são paulo\",\r\n    \"origem\": \"brasil\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tratadoSokovia?nome=stomp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tratadoSokovia"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "stomp"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
